@@ -4,7 +4,7 @@ title: "Minha página - com foto"
 description: "Bem vindo à minha página"
 category: "Política"
 price: "$150,00"
-banner: './img-001.jpg'
+banner: './img-000.jpg'
 ---
 
 # Minha página
