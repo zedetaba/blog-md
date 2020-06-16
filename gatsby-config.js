@@ -4,11 +4,11 @@ module.exports =  {
         'gatsby-transformer-sharp',
         {
             resolve: 'gatsby-source-filesystem',
-                options: {
-                    path: __dirname + '/src/content',
-                    name: 'pages'
-                }
-            },
+            options: {
+                path: __dirname + '/src/content',
+                name: 'pages'
+            }
+        },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
@@ -27,6 +27,12 @@ module.exports =  {
                         }
                     }
                 ]
+            }
+        },
+        {
+            resolve: `gatsby-plugin-purgecss`,
+            options: {
+                printRejected: true,
             }
         },
         'gatsby-plugin-netlify-cms'
