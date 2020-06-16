@@ -1,18 +1,52 @@
 
 const path = require( 'path' )
+
+const {  createFilePath } = require( 'gatsby-source-filesystem' )
+
+exports.onCreateNode = ({ node, getNode, actions }) => {
+    const { createNodeField } = actions
+    if (node.internal.type === 'MarkdownRemark') {
+        const contentName = getNode(node.parent).sourceInstanceName
+
+        createNodeField ( {
+            name: 'collection',
+            node,
+            value: contentName
+        } )
+
+        createNodeField({
+            name: 'slug',
+            node,
+            value: createFilePath({ node, getNode })
+        })
+    }
+}
+
 exports.createPages = async({ graphql, actions }) => {
     const { createPage } = actions
 
     const posts = await graphql(
         `
             query {
-                posts: allMarkdownRemark {
+                posts: allMarkdownRemark (filter: {fields: {collection: {eq: "pages"}}}) {
                     edges {
                         node {
                             frontmatter {                    
                                 description
                                 path
                                 title
+                            }
+                        }
+                    }
+                }
+                authors: allMarkdownRemark(filter: {fields: {collection: {eq: "authors"}}, frontmatter: {}}) {
+                    edges {
+                        node {
+                            frontmatter {
+                            title
+                            }
+                            fields {
+                                slug
                             }
                         }
                     }
@@ -29,7 +63,20 @@ exports.createPages = async({ graphql, actions }) => {
             path: post.node.frontmatter.path,
             component: template,
             context: {
-                id: post.node.frontmatter.path
+                id: post.node.frontmatter.title
+            }
+        })
+    })
+
+    const templateAuthor = path.resolve('src/templates/author.js')
+    posts.data.authors.edges.forEach(author => {
+        console.log(author.node.frontmatter.title)
+
+        createPage({
+            path: author.node.fields.slug,
+            component: templateAuthor,
+            context: {
+                id: author.node.fields.slug
             }
         })
     })

@@ -8,7 +8,14 @@ module.exports =  {
                     path: __dirname + '/src/content',
                     name: 'pages'
                 }
-            },            
+            },
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: __dirname + '/src/authors',
+                name: 'authors'
+            }
+        },            
         {
             resolve: 'gatsby-transformer-remark',
             options: {
