@@ -1,8 +1,9 @@
 ---
-title: 'Minha página'
-path: /blog/minha-pagina
-description: Bem vindo a minha página.
-banner: ./img1.jpg
+path: '/blog/minha-pagina2'
+title: 'Minha página!'
+description: 'Bem vindo a minha página.'
+categoria: 'teste'
+price: 10
 ---
 
 # Minha página
@@ -13,12 +14,11 @@ Este é um paragrafo.
 
 Este é outro paragrafo.
 
-![Minha foto](./img1.jpg)
-![Minha outra foto](../pagina01/img1.jpg)
-
 1. First ordered list item
-2. Another item ⋅⋅\* Unordered sub-list.
-3. Actual numbers don't matter, just that it's a number ⋅⋅1. Ordered sub-list
+2. Another item
+   ⋅⋅\* Unordered sub-list.
+3. Actual numbers don't matter, just that it's a number
+   ⋅⋅1. Ordered sub-list
 4. And another item.
 
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
@@ -30,7 +30,9 @@ Este é outro paragrafo.
 ⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
 - Unordered list can use asterisks
-- Or minuses
+
+* Or minuses
+
 - Or pluses
 
 Emphasis, aka italics, with _asterisks_ or _underscores_.

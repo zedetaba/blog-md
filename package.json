@@ -24,8 +24,9 @@
     "gatsby-transformer-sharp": "^2.5.5",
     "lodash": "^4.17.15",
     "netlify-cms": "^2.10.50",
+    "netlify-cms-app": "^2.12.14",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.1.0"
   }
 }

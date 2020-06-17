@@ -1,7 +1,6 @@
+const path = require('path')
 
-const path = require( 'path' )
-
-const {  createFilePath } = require( 'gatsby-source-filesystem' )
+const { createFilePath } = require('gatsby-source-filesystem')
 const { title } = require('process')
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -9,11 +8,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     if (node.internal.type === 'MarkdownRemark') {
         const contentName = getNode(node.parent).sourceInstanceName
 
-        createNodeField ( {
+        createNodeField({
             name: 'collection',
             node,
             value: contentName
-        } )
+        })
 
         createNodeField({
             name: 'slug',
@@ -23,44 +22,44 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     }
 }
 
-exports.createPages = async({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
 
-    const posts = await graphql(
-        `
-            query {
-                posts: allMarkdownRemark (filter: {fields: {collection: {eq: "pages"}}}) {
-                    edges {
-                        node {
-                            frontmatter {                    
-                                description
-                                path
-                                title
-                            }
-                        }
-                    }
-                }
-                authors: allMarkdownRemark(filter: {fields: {collection: {eq: "authors"}}, frontmatter: {}}) {
-                    edges {
-                        node {
-                            frontmatter {
+const posts = await graphql(`
+    query {
+        posts: allMarkdownRemark(
+            filter: {fields: {collection: {eq: "pages"}}}) {
+                edges {
+                    node {
+                        frontmatter {                    
+                            description
+                            path
                             title
-                            }
-                            fields {
-                                slug
-                            }
                         }
                     }
                 }
-            }    
-        `
-    )
+            }
+        authors: allMarkdownRemark(
+            filter: {fields: {collection: {eq: "authors"}}}) {
+                edges {
+                    node {
+                        frontmatter {
+                            title
+                        }
+                        fields {
+                            slug
+                        }
+                    }
+                }
+            }
+        }    
+    `)
 
     const template = path.resolve('src/templates/post.js')
     posts.data.posts.edges.forEach(post => {
-        console.log(post.node.frontmatter.title)        
+        console.log(post.node.frontmatter.title)
 
-        createPage ( { 
+        createPage({
             path: post.node.frontmatter.path,
             component: template,
             context: {
@@ -89,18 +88,18 @@ exports.createPages = async({ graphql, actions }) => {
 
     console.log("Page number: " + numPages)
 
- Array
-    .from( { length: numPages } )
-    .forEach( ( _, i ) => {
-        createPage( { 
-            path: '/blog' + (i === 0 ? '' : '/' + i),
-            component: templateBlog,
-            context: {
-                limit: pageSize,
-                skip: i * pageSize,
-                numPages,
-                currentPage: i
-            }
+    Array
+        .from({ length: numPages })
+        .forEach((_, i) => {
+            createPage({
+                path: '/blog' + (i === 0 ? '' : '/' + i),
+                component: templateBlog,
+                context: {
+                    limit: pageSize,
+                    skip: i * pageSize,
+                    numPages,
+                    currentPage: i
+                }
+            })
         })
-    })
 }
