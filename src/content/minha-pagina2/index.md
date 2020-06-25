@@ -1,6 +1,6 @@
 ---
 path: '/blog/minha-pagina2'
-title: 'Minha página!'
+title: 'Minha página 2'
 description: 'Bem vindo a minha página.'
 categoria: 'teste'
 price: 10
