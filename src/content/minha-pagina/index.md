@@ -1,6 +1,6 @@
 ---
 title: 'Minha página'
-path: /blog/minha-pagina
+path: '/blog/minha-pagina'
 description: Bem vindo a minha página.
 banner: ./img1.jpg
 ---
