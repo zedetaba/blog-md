@@ -1,6 +1,6 @@
 ---
 path: '/blog/page22'
-title: 'outra página de teste'
+title: 'Página 22'
 description: 'esta é a descrição'
 ---
 
