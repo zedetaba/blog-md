@@ -2,8 +2,7 @@
 path: '/blog/minha-pagina2'
 title: 'Minha página 2'
 description: 'Bem vindo a minha página.'
-categoria: 'teste'
-price: 10
+banner: './img2.jpg'
 ---
 
 # Minha página
