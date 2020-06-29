@@ -1,5 +1,5 @@
 ---
-path: '/blog/page2'
+path: '/page2'
 title: 'Página 2'
 description: 'esta é a descrição'
 banner: './img4.jpg'

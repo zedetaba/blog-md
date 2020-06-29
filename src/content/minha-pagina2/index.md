@@ -1,5 +1,5 @@
 ---
-path: '/blog/minha-pagina2'
+path: '/minha-pagina2'
 title: 'Minha página 2'
 description: 'Bem vindo a minha página.'
 banner: './img2.jpg'
