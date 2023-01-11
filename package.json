@@ -20,7 +20,7 @@
     "gatsby-plugin-sharp": "^2.6.11",
     "gatsby-remark-images": "^3.3.10",
     "gatsby-source-filesystem": "^2.3.10",
-    "gatsby-transformer-remark": "^2.8.14",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.5.5",
     "lodash": "^4.17.15",
     "netlify-cms": "^2.10.50",
